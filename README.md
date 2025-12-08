@@ -1,8 +1,9 @@
-<div style="text-align: center; margin-top: 50px; margin-bottom: 50px; padding: 30px;">
+<div class="large-space-div" align="center">
   <h1>C+</h1>
   <h3>Readable C</h3>
   
-  <img src="https://github.com/Bean-Pringles/CPlus/blob/main/cplus.png" alt="C+ Logo" style="max-width: 100%;">
+  <img src="https://github.com/Bean-Pringles/CPlus/blob/main/cplus.png" alt="C+ Logo">
+  <h1> </h1>
 </div>
 
 <p>
