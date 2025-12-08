@@ -1,6 +1,5 @@
 <div style="text-align: center;">
-### C+
-# Readable C
-
-![alt text](https://github.com/Bean-Pringles/CPlus/blob/main/cplus.png)
+  <h3>C+</h3>
+  <h1>Readable C</h1>
+  <img src="[raw.githubusercontent.com](https://github.com/Bean-Pringles/CPlus/blob/main/cplus.png)" alt="C+ Logo">
 </div>
