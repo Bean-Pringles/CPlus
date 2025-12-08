@@ -2,12 +2,22 @@ import re
 import sys
 import os
 import subprocess
+import platform
+
+def is_windows():
+    return platform.system() == "Windows"
 
 def compileC(filename, args):
     try:
         if "-c" not in args:
+            # Determine output executable name based on OS
+            if is_windows():
+                output_name = filename[:-2] + ".exe"
+            else:
+                output_name = filename[:-2]
+            
             try:
-                subprocess.run(["gcc", filename, "-o", filename[:-2]], check=True)
+                subprocess.run(["gcc", filename, "-o", output_name], check=True)
             except subprocess.CalledProcessError as e:
                 print(f"[Error] GCC compilation failed: {e}")
                 return
@@ -22,7 +32,11 @@ def compileC(filename, args):
                 print(f"[Warning] Could not remove temporary file '{filename}': {e}")
 
             if "-r" in args:
-                fileexe = "./" + filename[:-2] + ".exe"
+                # Determine executable path based on OS
+                if is_windows():
+                    fileexe = filename[:-2] + ".exe"
+                else:
+                    fileexe = "./" + filename[:-2]
                 
                 try:
                     subprocess.run([fileexe], check=True)
@@ -35,7 +49,11 @@ def compileC(filename, args):
 
                 if "-d" in args:
                     try:
-                        exe_path = os.path.abspath(filename[:-2] + ".exe")
+                        if is_windows():
+                            exe_path = os.path.abspath(filename[:-2] + ".exe")
+                        else:
+                            exe_path = os.path.abspath(filename[:-2])
+                        
                         if os.path.exists(exe_path):
                             os.remove(exe_path)
                     except Exception as e:
