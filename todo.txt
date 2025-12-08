@@ -1,0 +1,106 @@
+float / double:
+
+let x: float = 3.14159
+
+let x: double = 3.14159265358
+
+---------------------------------------------------------------------------------------------
+char
+
+?????????????????????????????????????????????????????????????????????????????????????????????
+
+unsigned types
+
+let x: int; unsigned = 5
+
+---------------------------------------------------------------------------------------------
+
+long long / short
+
+arrays (let a: int[10])
+
+pointers (let* x: int = &y)
+
+function pointers
+
+const / volatile / static
+
+arithmetic (+ - * / %)
+
+bitwise (& | ^ ~ << >>)
+
+logical (&& || !)
+
+assignment (= += -= *= /= %= &= |= ^= <<= >>=)
+
+ternary (cond ? a : b)
+
+indexing (x[5])
+
+
+member access (obj.field)
+
+pointer member access (ptr->field)
+
+casts ((int)x)
+
+if, else
+
+switch, case, break, default
+
+while
+
+do ... while
+
+for
+
+return
+
+continue
+
+variable declarations
+
+compound blocks { ... }
+
+function calls
+
+parameters
+
+parameter types
+
+fn add(a: int, b: int) -> int { ... }
+
+varargs (...)
+
+static inline
+
+extern
+
+recursion (already supported implicitly)
+
+struct
+
+union
+
+enum
+
+typedefs
+
+pointer typedefs (typedef char* string;)
+
+#define
+
+#undef
+
+#ifdef / #ifndef / #endif
+
+#pragma
+
+macro functions
+#define add(x,y) (x+y)
+
+support escape sequences
+
+support multi-line strings
+
+maybe support interpolation "Hello {x}"
