@@ -22,8 +22,6 @@ fn main() {
 
     print(hello + ", " + name + "!")
 }
-
-<h3>C+ Example of Hello World</h3>
 ```
 <h1> </h1>
 <h3>C Example of Hello World:</h3>
