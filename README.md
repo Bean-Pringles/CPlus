@@ -2,6 +2,8 @@
   <h1>C+</h1>  
   <img src="https://github.com/Bean-Pringles/CPlus/blob/main/cplus.png" alt="C+ Logo">
   <h3>Readable C</h3>
+  <!-- The functional badge code -->
+  <img alt="Static Badge" src="https://img.shields.io/badge/stars-0-orange">
   <h1> </h1>
 </div>
 
