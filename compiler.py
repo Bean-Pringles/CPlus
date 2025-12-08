@@ -222,7 +222,7 @@ def compileLine(tokens):
                                 tokens.insert(idx, "unsigned")
                                 tokens.insert(idx + 1, " ")
                                 for _ in range(4):
-                                    del tokens[6]
+                                    del tokens[idx + 5]
                                 tokens.insert(idx + 6, "[]")
                 
                 except Exception as e:
