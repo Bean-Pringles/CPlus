@@ -1,15 +1,8 @@
-.large-space-div {
-  margin-top: 50px; /* Adds 50 pixels of space above the element */
-  margin-bottom: 50px; /* Adds 50 pixels of space below the element */
-  padding: 30px; /* Adds 30 pixels of space inside the element on all sides */
-}
-
-<div class="large-space-div" align="center">
+<div style="text-align: center; margin-top: 50px; margin-bottom: 50px; padding: 30px;">
   <h1>C+</h1>
   <h3>Readable C</h3>
   
-  <img src="https://github.com/Bean-Pringles/CPlus/blob/main/cplus.png" alt="C+ Logo">
-  <h1> </h1>
+  <img src="github.com" alt="C+ Logo" style="max-width: 100%;">
 </div>
 
 <p>
