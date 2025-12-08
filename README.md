@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>C+</h1>
+  <title>C+</title>
   <h3>Readable C</h3>
   <h3> </h3>
   <h3> </h3>
