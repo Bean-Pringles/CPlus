@@ -64,3 +64,7 @@ void main() {
 
 <h1>License</h1>
 <a href="https://github.com/Bean-Pringles/CPlus/blob/main/LICENSE.md">This project is licensed under the Bean Pringles Compiler License (BPC License) v1.0</a>
+
+<h1>Future Features:</h1>
+<p>To check out future features, go to <a href="https://github.com/Bean-Pringles/CPlus/blob/main/TODO.txt">here</a>.</p>
+<p>Things with a row of "-" underneath them are completed and added to the main repository</p>
