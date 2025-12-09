@@ -7,7 +7,7 @@
 </div>
 
 <p>
-C+ is a language that compiles directly to C. It maintains C's power while making it easier to understand and read. With one-to-one line translation, experienced C developers can translate their code into C+ with ease. The compiler, written in Python, has helpful and descriptive error messages to help the average developer. C+ is designed to get new people into C without the headaches but with the power. Let's see what you can make!
+C+ is a language that compiles directly to C. It maintains C's power while making it easier to understand and read. With one-to-one line translation, experienced C developers can translate their code into C+ with ease. The compiler, written in Python, has helpful and descriptive error messages to help the average developer. C+ is designed to get new people into C without the headaches, but with the power. Let's see what you can make!
 </p>
 
 <h1>Table Of Contents:</h1>
@@ -17,7 +17,7 @@ C+ is a language that compiles directly to C. It maintains C's power while makin
   <li><a href="#setup">Setup</a></li>
   <li><a href="#license">License</a></li>
   <li><a href="#future-features">Future Features</a></li>
-  <li><a href="#milestones">Milestones</a></li>
+  <li><a href="#milestones">Milestones</a></li> <!-- Ben wth does this do (also I didn't know you knew HTML) -->
 </ul>
 
 
@@ -51,7 +51,7 @@ void main() {
 <h1 id="features">Features:</h1>
 <ul>
   <li>Compiled Directly to C</li>
-  <li>Has one to one translation with C</li>
+  <li>Has one-to-one translation with C</li>
   <li>Does not require semicolons</li>
   <li>Pointers declared with "let*"</li>
   <li>Use "let [varname]: [var type]" instead of "int" or "char"</li>
@@ -65,7 +65,7 @@ void main() {
 </ul>
 
 <h1 id="setup">Setup:</h1>
-<p>You can setup the compiler by navigating to setup.py and running</p>
+<p>You can set up the compiler by navigating to setup.py and running</p>
 <h3>Windows:</h3>
 <pre><code>python setup.py </code></pre>
 <h3>Linux/MacOS</h3>
