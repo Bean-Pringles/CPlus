@@ -1,0 +1,20 @@
+import stdio 
+import stdlib
+
+/* 
+Multi Line Comment
+*/
+
+fn main() -> int {
+    print("Hello, World!\n") // Comment
+
+    let a: int; unsigned; long long = 4
+    let b: int; long long = 4
+    let c: int; unsigned; long = 4
+    let d: int; long = 4
+
+    let e: string = "Hello"
+    let f: string; unsigned = "Hello"
+
+    return 0
+}
