@@ -36,3 +36,19 @@ void main() {
     printf("%s, %s!\n", hello, name);
 }
 ```
+
+<h1>Features:</h1>
+<ul>
+  <li>Compiled Directly to C</li>
+  <li>Has one to one translation with C</li>
+  <li>Does not require semicolons</li>
+  <li>Pointers declared with "let*"</li>
+  <li>Use "let [varname]: [var type]" instead of "int" or "char"</li>
+  <li>Uses the GCC Compiler to compile the C</li>
+  <li>If/Else statements do not require parentheses</li>
+  <li>Void functions declared with "fn"</li>
+  <li>Functions that return have a "-> [var type]" after the arguemnets</li>
+  <li>Use "import [libray name]"</li>
+  <li>Supports unsigned, long, short, or long long varibles with the following syntax "let x: int; [unsigned]; [long, short, long long]"</li>
+  <li>Uses "print" instead of "printf"</li>
+</ul>
