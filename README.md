@@ -10,7 +10,17 @@
 C+ is a language that compiles directly to C. It maintains C's power while making it easier to understand and read. With one-to-one line translation, experienced C developers can translate their code into C+ with ease. The compiler, written in Python, has helpful and descriptive error messages to help the average developer. C+ is designed to get new people into C without the headaches but with the power. Let's see what you can make!
 </p>
 
-<h1>Example Syntax:</h1>
+<h1>Table Of Contents:</h1>
+<ul>
+  <li><a href="#example-syntax">Example Syntax</a></li>
+  <li><a href="#features">Features</a></li>
+  <li><a href="#setup">Setup</a></li>
+  <li><a href="#license">License</a></li>
+  <li><a href="#future-features">Future Features</a></li>
+</ul>
+
+
+<h1 id="example-syntax">Example Syntax:</h1>
 <h3>C+ Example of Hello World:</h3>
 
 ```C+
@@ -37,7 +47,7 @@ void main() {
 }
 ```
 
-<h1>Features:</h1>
+<h1 id="features">Features:</h1>
 <ul>
   <li>Compiled Directly to C</li>
   <li>Has one to one translation with C</li>
@@ -53,7 +63,7 @@ void main() {
   <li>Uses "print" instead of "printf"</li>
 </ul>
 
-<h1>Setup:</h1>
+<h1 id="setup">Setup:</h1>
 <p>You can setup the compiler by navigating to setup.py and running</p>
 <h3>Windows:</h3>
 <pre><code>python setup.py </code></pre>
@@ -62,9 +72,9 @@ void main() {
 <p>Then you can run the compiler by:</p>
 <pre><code>cpc [filename].cplus [Flags: -r -d -c]</code></pre>
 
-<h1>License</h1>
+<h1 id="license">License</h1>
 <a href="https://github.com/Bean-Pringles/CPlus/blob/main/LICENSE.md">This project is licensed under the Bean Pringles Compiler License (BPC License) v1.0</a>
 
-<h1>Future Features:</h1>
+<h1 id="future-features">ThisFuture Features:</h1>
 <p>To check out future features, go to <a href="https://github.com/Bean-Pringles/CPlus/blob/main/TODO.txt">here</a>.</p>
 <p>Things with a row of "-" underneath them are completed and added to the main repository</p>
