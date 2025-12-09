@@ -52,3 +52,15 @@ void main() {
   <li>Supports unsigned, long, short, or long long varibles with the following syntax "let x: int; [unsigned]; [long, short, long long]"</li>
   <li>Uses "print" instead of "printf"</li>
 </ul>
+
+<h1>Setup:</h1>
+<p>You can setup the compiler by navigating to setup.py and running</p>
+<h3>Windows:</h3>
+<pre><code>python setup.py </code></pre>
+<h3>Linux/MacOS</h3>
+<pre><code>python3 setup.py</code></pre>
+<p>Then you can run the compiler by:</p>
+<pre><code>cpc [filename].cplus [Flags: -r -d -c]</code></pre>
+
+<h1>License</h1>
+<a href="https://github.com/Bean-Pringles/CPlus/blob/main/LICENSE.md">This project is licensed under the Bean Pringles Compiler License (BPC License) v1.0</a>
