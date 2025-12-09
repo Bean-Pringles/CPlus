@@ -73,8 +73,8 @@ void main() {
 <pre><code>cpc [filename].cplus [Flags: -r -d -c]</code></pre>
 
 <h1 id="license">License</h1>
-<a href="https://github.com/Bean-Pringles/CPlus/blob/main/LICENSE.md">This project is licensed under the Bean Pringles Compiler License (BPC License) v1.0</a>
+<p>This project is licensed under the <a href="https://github.com/Bean-Pringles/CPlus/blob/main/LICENSE.md">Bean Pringles Compiler License (BPC License) v1.0</a></p>
 
-<h1 id="future-features">ThisFuture Features:</h1>
+<h1 id="future-features">Future Features:</h1>
 <p>To check out future features, go to <a href="https://github.com/Bean-Pringles/CPlus/blob/main/TODO.txt">here</a>.</p>
 <p>Things with a row of "-" underneath them are completed and added to the main repository</p>
