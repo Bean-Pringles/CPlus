@@ -17,6 +17,7 @@ C+ is a language that compiles directly to C. It maintains C's power while makin
   <li><a href="#setup">Setup</a></li>
   <li><a href="#license">License</a></li>
   <li><a href="#future-features">Future Features</a></li>
+  <li><a href="#milestones">Milestones</a></li>
 </ul>
 
 
@@ -72,9 +73,13 @@ void main() {
 <p>Then you can run the compiler by:</p>
 <pre><code>cpc [filename].cplus [Flags: -r -d -c]</code></pre>
 
-<h1 id="license">License</h1>
+<h1 id="license">License:</h1>
 <p>This project is licensed under the <a href="https://github.com/Bean-Pringles/CPlus/blob/main/LICENSE.md">Bean Pringles Compiler License (BPC License) v1.0</a></p>
 
 <h1 id="future-features">Future Features:</h1>
 <p>To check out future features, go to <a href="https://github.com/Bean-Pringles/CPlus/blob/main/TODO.txt">here</a>.</p>
 <p>Things with a row of "-" underneath them are completed and added to the main repository</p>
+
+<h1 id="milestones">Milestones:</h1>
+<ui>
+</ui>
