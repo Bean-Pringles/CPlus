@@ -2,7 +2,7 @@
   <img src="https://github.com/Bean-Pringles/CPlus/blob/main/Logo/cplus.png" alt="C+ Logo">
   <h3>Readable C</h3>
   <!-- The functional badge code -->
-  <img alt="Static Badge" src="https://img.shields.io/github/stars/Bean-Pringles/Cplus"> <img alt="Static Badge" src="https://img.shields.io/badge/Language-Python-orange"> <img alt="Static Badge" src="https://img.shields.io/badge/OS-Windows, Linux, MacOS-green"> <img alt="Static Badge" src="https://img.shields.io/badge/Version-v0.2.1-purple"> <img alt="Static Badge" src="https://img.shields.io/badge/CPU-x86-yellow"> <img alt="Static Badge" src=https://img.shields.io/github/downloads/Bean-Pringles/Cplus/total.svg"> <img alt="Static Badge" src="https://img.shields.io/github/repo-size/Bean-Pringles/Cplus"> <img alt="Static Badge" src="https://img.shields.io/github/last-commit/Bean-Pringles/Cplus"> <img alt="Static Badge"src="https://img.shields.io/badge/404-Not%20Found-lightgrey">
+  <img alt="Static Badge" src="https://img.shields.io/github/stars/Bean-Pringles/Cplus"> <img alt="Static Badge" src="https://img.shields.io/badge/Language-Python-orange"> <img alt="Static Badge" src="https://img.shields.io/badge/OS-Windows, Linux, MacOS-green"> <img alt="Static Badge" src="https://img.shields.io/badge/Version-v0.2.2-purple"> <img alt="Static Badge" src="https://img.shields.io/badge/CPU-x86-yellow"> <img alt="Static Badge" src=https://img.shields.io/github/downloads/Bean-Pringles/Cplus/total.svg"> <img alt="Static Badge" src="https://img.shields.io/github/repo-size/Bean-Pringles/Cplus"> <img alt="Static Badge" src="https://img.shields.io/github/last-commit/Bean-Pringles/Cplus"> <img alt="Static Badge"src="https://img.shields.io/badge/404-Not%20Found-lightgrey">
   <h1> </h1>
 </div>
 
