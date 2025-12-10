@@ -17,7 +17,7 @@ C+ is a language that compiles directly to C. It maintains C's power while makin
   <li><a href="#setup">Setup</a></li>
   <li><a href="#license">License</a></li>
   <li><a href="#future-features">Future Features</a></li>
-  <li><a href="#milestones">Milestones</a></li> <!-- Ben wth does this do (also I didn't know you knew HTML) -->
+  <li><a href="#milestones">Milestones</a></li> <!-- This creates a list with each thing relating to a specific heading on it, so when you click the link, it scrolls down to that section. HTML is kinda easy, its just google searching what you need and formating it to you -->
 </ul>
 
 
