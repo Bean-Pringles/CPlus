@@ -65,7 +65,7 @@ void main() {
 </ul>
 
 <h1 id="setup">Setup:</h1>
-<p>You can set up the compiler by navigating to setup.py and running</p>
+<p>You can set up the compiler by navigating to setup.py and running. Make sure you run it as an admin.</p>
 <h3>Windows:</h3>
 <pre><code>python setup.py </code></pre>
 <h3>Linux/MacOS</h3>
