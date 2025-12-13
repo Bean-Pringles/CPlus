@@ -19,18 +19,18 @@ def create_launcher():
     """Create platform-specific launcher"""
     if is_windows():
         # Windows: Create .bat file
-        bat_path = os.path.join(base_dir, "cpc.bat")
+        bat_path = os.path.join(base_dir, "cpx.bat")
         if os.path.exists(bat_path):
-            print("[*] cpc.bat already exists, skipping creation.")
+            print("[*] cpx.bat already exists, skipping creation.")
         else:
             with open(bat_path, "w") as f:
                 f.write(f'@echo off\npython "{compiler_script}" %*\n')
             print(f"[+] Created launcher: {bat_path}")
     else:
         # Linux/macOS: Create shell script
-        sh_path = os.path.join(base_dir, "cpc")
+        sh_path = os.path.join(base_dir, "cpx")
         if os.path.exists(sh_path):
-            print("[*] cpc launcher already exists, skipping creation.")
+            print("[*] cpx launcher already exists, skipping creation.")
         else:
             with open(sh_path, "w") as f:
                 f.write(f'#!/bin/bash\npython3 "{compiler_script}" "$@"\n')
@@ -88,7 +88,7 @@ def update_path_unix():
         
         # Append to config file
         with open(rc_file, "a") as f:
-            f.write(f"\n# Added by cpc installer\n{path_export}")
+            f.write(f"\n# Added by cpx installer\n{path_export}")
         
         print(f"[+] Added {base_dir} to PATH in {rc_file}")
         print(f"[*] Run 'source {rc_file}' or restart your terminal for changes to apply.")
@@ -114,3 +114,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
