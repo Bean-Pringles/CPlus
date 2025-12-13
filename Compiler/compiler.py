@@ -245,9 +245,8 @@ def compileLine(tokens):
                                     tokens.insert(idx + 2, tokens[idx + 7])
                                     tokens.insert(idx + 3, " ")
 
-                                    del tokens[idx + 7]
-                                    del tokens[idx + 7]
-                                    del tokens[idx + 7]
+                                    for _ in range(3):
+                                        del tokens[idx + 7]
                                 
                                 elif longShortVar == 2:
                                     # unsigned int a; long long = 4;
@@ -259,6 +258,10 @@ def compileLine(tokens):
                                     for _ in range(5):
                                         del tokens[idx + 9]
 
+                            else:
+                                del tokens[4]
+                                del tokens[4]
+
                             if longShortVar == 2 and unsignedVar == 0:
                                 # unsigned int a; long long = 4;
                                 tokens.insert(idx, "long")
@@ -268,7 +271,7 @@ def compileLine(tokens):
 
                                 for _ in range(7):
                                     del tokens[idx + 7]
-                        
+
                         elif "string" in tokens:
                             # let x: string; unsigned = 1
                             tokens[idx] = "char"
@@ -357,7 +360,7 @@ def main():
             print(f"[Error] File not found: '{filename}'")
             sys.exit(1)
 
-        cfilepath = filename[:-5] + "c"
+        cfilepath = filename[:-3] + "c"
 
         # remove old output
         try:
@@ -391,5 +394,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
