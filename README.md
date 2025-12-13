@@ -71,7 +71,7 @@ void main() {
 <h3>Linux/MacOS</h3>
 <pre><code>python3 setup.py</code></pre>
 <p>Then you can run the compiler by:</p>
-<pre><code>cpx [filename].cpx [Flags: -r -d -c]</code></pre>
+<pre><code>cpx [filename].cpx [Flags: -r -d -c -v]</code></pre>
 
 <h1 id="license">License:</h1>
 <p>This project is licensed under the <a href="https://github.com/Bean-Pringles/CPlus/blob/main/LICENSE.md">Bean Pringles Compiler License (BPC License) v1.0</a></p>
