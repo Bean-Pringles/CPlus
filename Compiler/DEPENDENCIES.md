@@ -6,7 +6,7 @@
 3. os
 4. subprocess
 5. platform
-
+6. Pillow
 
 ***These are in the Python standard library***
 
