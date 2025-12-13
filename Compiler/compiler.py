@@ -339,7 +339,7 @@ def compileLine(tokens):
 def main():
     try:
         if len(sys.argv) < 2:
-            print("[Error] Usage: cpc <filename.cpl> [options]")
+            print("[Error] Usage: cpc <filename.cpx> [options]")
             sys.exit(1)
         
         args = sys.argv
@@ -349,8 +349,8 @@ def main():
 
         filename = args[1]
 
-        if os.path.splitext(filename)[1] != ".cpl":
-            print("[Error] A .cpl file is required")
+        if os.path.splitext(filename)[1] != ".cpx":
+            print("[Error] A .cpx file is required")
             sys.exit(1)
 
         if not os.path.exists(filename):
@@ -391,4 +391,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
