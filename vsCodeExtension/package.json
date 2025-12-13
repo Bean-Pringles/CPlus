@@ -1,0 +1,44 @@
+{
+  "name": "cplus",
+  "displayName": "C+ Language Syntax Highlighting",
+  "description": "Syntax highlighting and language support for C+ (.cpx files)",
+  "version": "0.1.0",
+  "readme": "README.md",
+  "publisher": "BeanPringles",
+  "repository": "https://github.com/Bean-Pringles/CPlus",
+  "icon": "images/cplus.png",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "cplus",
+        "aliases": [
+          "C+",
+          "cplus"
+        ],
+        "extensions": [
+          ".cpx"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "cplus",
+        "scopeName": "source.cplus",
+        "path": "./syntaxes/cplus.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "cplus",
+        "path": "./snippets/cplus.json"
+      }
+    ]
+  }
+}
