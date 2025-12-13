@@ -341,6 +341,11 @@ def compileLine(tokens):
 
 def main():
     try:
+        if sys.argv:
+            if "-v" in sys.argv:
+                print("C+ Compiler Version:\n v0.2.2")
+                sys.exit()
+        
         if len(sys.argv) < 2:
             print("[Error] Usage: cpc <filename.cpx> [options]")
             sys.exit(1)
