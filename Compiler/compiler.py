@@ -343,7 +343,7 @@ def main():
     try:
         if sys.argv:
             if "-v" in sys.argv:
-                print("C+ Compiler Version:\n v0.2.2")
+                print("C+ Compiler Version:\n v0.2.3")
                 sys.exit()
         
         if len(sys.argv) < 2:
@@ -399,3 +399,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
