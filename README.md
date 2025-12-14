@@ -65,12 +65,7 @@ void main() {
 </ul>
 
 <h1 id="setup">Setup:</h1>
-<p>You can set up the compiler by navigating to setup.py and running. Make sure you run it as an admin.</p>
-<h3>Windows:</h3>
-<pre><code>python setup.py </code></pre>
-<h3>Linux/MacOS</h3>
-<pre><code>python3 setup.py</code></pre>
-<p>Then you can run the compiler by:</p>
+<p>You can set up the compiler by navigating to setup.exe and running it. Make sure you run it as an admin. Then you can run the compiler by:</p>
 <pre><code>cpx [filename].cpx [Flags: -r -d -c -v]</code></pre>
 
 <h1 id="license">License:</h1>
