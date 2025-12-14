@@ -19,33 +19,33 @@ SETUP_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 # ================ DEPENDENCY CHECKING ================
-def check_python_package(package_name, import_name=None):
+def checkPythonPackage(packageName, importName=None):
     """Check if a Python package is installed"""
-    if import_name is None:
-        import_name = package_name
+    if importName is None:
+        importName = packageName
     
     try:
-        __import__(import_name)
+        __import__(importName)
         return True
     except ImportError:
         return False
 
 
-def install_python_package(package_name):
+def installPythonPackage(packageName):
     """Install a Python package using pip"""
-    print(f"[*] Installing {package_name}...")
+    print(f"[*] Installing {packageName}...")
     try:
         subprocess.check_call([
-            sys.executable, "-m", "pip", "install", package_name
+            sys.executable, "-m", "pip", "install", packageName
         ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        print(f"[+] Successfully installed {package_name}")
+        print(f"[+] Successfully installed {packageName}")
         return True
     except subprocess.CalledProcessError:
-        print(f"[!] Failed to install {package_name}")
+        print(f"[!] Failed to install {packageName}")
         return False
 
 
-def check_gcc():
+def checkGcc():
     """Check if GCC is installed"""
     try:
         result = subprocess.run(
@@ -58,14 +58,14 @@ def check_gcc():
         return False
 
 
-def install_gcc():
+def installGcc():
     """Automatically install GCC based on OS"""
-    os_name = platform.system()
+    osName = platform.system()
     
     print("\n[!] GCC compiler not found!")
     print("[*] Attempting automatic installation...")
     
-    if os_name == "Windows":
+    if osName == "Windows":
         print("[*] Checking for package managers...")
         
         # Try Chocolatey first
@@ -103,7 +103,7 @@ def install_gcc():
         """)
         return False
             
-    elif os_name == "Darwin":
+    elif osName == "Darwin":
         print("[*] Installing Xcode Command Line Tools...")
         try:
             # Try xcode-select install
@@ -139,7 +139,7 @@ def install_gcc():
             print(f"[!] Installation failed: {e}")
             return False
             
-    elif os_name == "Linux":
+    elif osName == "Linux":
         print("[*] Detecting package manager...")
         
         # Debian/Ubuntu
@@ -195,52 +195,52 @@ def install_gcc():
     return False
 
 
-def check_dependencies():
+def checkDependencies():
     """Check and install all required dependencies"""
     print("\n=== CHECKING DEPENDENCIES ===")
     
-    all_satisfied = True
+    allSatisfied = True
     
     # Check standard library modules (these should always be available)
-    stdlib_modules = ["re", "sys", "os", "subprocess", "platform", "tempfile"]
+    stdlibModules = ["re", "sys", "os", "subprocess", "platform", "tempfile"]
     print("[*] Checking Python standard library modules...")
-    for mod in stdlib_modules:
-        if check_python_package(mod):
+    for mod in stdlibModules:
+        if checkPythonPackage(mod):
             print(f"    [+] {mod}")
         else:
             print(f"    [!] {mod} missing (this is unusual)")
-            all_satisfied = False
+            allSatisfied = False
     
     # Check Pillow
     print("\n[*] Checking third-party packages...")
-    if not check_python_package("Pillow", "PIL"):
+    if not checkPythonPackage("Pillow", "PIL"):
         print("    [!] Pillow not installed")
-        if install_python_package("Pillow"):
-            all_satisfied = all_satisfied and True
+        if installPythonPackage("Pillow"):
+            allSatisfied = allSatisfied and True
         else:
             print("    [!] Please install manually: pip install Pillow")
-            all_satisfied = False
+            allSatisfied = False
     else:
         print("    [+] Pillow")
     
     # Check GCC
     print("\n[*] Checking command-line tools...")
-    if check_gcc():
+    if checkGcc():
         print("    [+] GCC compiler")
     else:
         print("    [!] GCC compiler not found")
-        if install_gcc():
+        if installGcc():
             # Verify installation
-            if check_gcc():
+            if checkGcc():
                 print("    [+] GCC compiler installed successfully")
             else:
                 print("    [!] GCC installed but not found in PATH")
                 print("    [*] You may need to restart your terminal")
-                all_satisfied = False
+                allSatisfied = False
         else:
-            all_satisfied = False
+            allSatisfied = False
     
-    if not all_satisfied:
+    if not allSatisfied:
         print("\n[!] Some dependencies are missing. Please install them before continuing.")
         print("[*] You can re-run this installer after installing dependencies.")
         return False
@@ -250,7 +250,7 @@ def check_dependencies():
 
 
 # ================ ICON GENERATION ================
-def load_image(path):
+def loadImage(path):
     from PIL import Image
     img = Image.open(path)
     if img.mode != "RGBA":
@@ -258,21 +258,21 @@ def load_image(path):
     return img
 
 
-def make_windows_ico(img, out_path):
-    img.save(out_path, format="ICO", sizes=[(s, s) for s in WINDOWS_SIZES])
-    print(f"[+] Windows ICO: {out_path}")
+def makeWindowsIco(img, outPath):
+    img.save(outPath, format="ICO", sizes=[(s, s) for s in WINDOWS_SIZES])
+    print(f"[+] Windows ICO: {outPath}")
 
 
-def make_linux_icons(img, out_dir):
+def makeLinuxIcons(img, outDir):
     from PIL import Image
-    os.makedirs(out_dir, exist_ok=True)
+    os.makedirs(outDir, exist_ok=True)
     for size in LINUX_SIZES:
         resized = img.resize((size, size), Image.LANCZOS)
-        resized.save(os.path.join(out_dir, f"{size}x{size}.png"))
-    print(f"[+] Linux icons: {out_dir}/")
+        resized.save(os.path.join(outDir, f"{size}x{size}.png"))
+    print(f"[+] Linux icons: {outDir}/")
 
 
-def make_macos_icns(img, out_path):
+def makeMacosIcns(img, outPath):
     """macOS .icns creation using iconutil"""
     from PIL import Image
     with tempfile.TemporaryDirectory() as tmp:
@@ -288,53 +288,53 @@ def make_macos_icns(img, out_path):
                 retina.save(os.path.join(iconset, f"icon_{size}x{size}@2x.png"))
 
         subprocess.run(
-            ["iconutil", "-c", "icns", iconset, "-o", out_path],
+            ["iconutil", "-c", "icns", iconset, "-o", outPath],
             check=True
         )
 
-    print(f"[+] macOS ICNS: {out_path}")
+    print(f"[+] macOS ICNS: {outPath}")
 
 
-def generate_icons(source_image):
+def generateIcons(sourceImage):
     """Generate icons for the current OS only"""
     base = "cpx"
-    img = load_image(source_image)
-    os_name = platform.system()
+    img = loadImage(sourceImage)
+    osName = platform.system()
 
-    if os_name == "Windows":
-        make_windows_ico(img, os.path.join(SETUP_DIR, f"{base}.ico"))
-    elif os_name == "Linux":
-        make_linux_icons(img, os.path.join(SETUP_DIR, f"{base}_linux_icons"))
-    elif os_name == "Darwin":
-        make_macos_icns(img, os.path.join(SETUP_DIR, f"{base}.icns"))
+    if osName == "Windows":
+        makeWindowsIco(img, os.path.join(SETUP_DIR, f"{base}.ico"))
+    elif osName == "Linux":
+        makeLinuxIcons(img, os.path.join(SETUP_DIR, f"{base}_linux_icons"))
+    elif osName == "Darwin":
+        makeMacosIcns(img, os.path.join(SETUP_DIR, f"{base}.icns"))
 
 
 # ================ LAUNCHER CREATION ================
-def create_launcher():
+def createLauncher():
     """Create platform-specific launcher"""
-    compiler_script = os.path.join(SCRIPT_DIR, "compiler.py")
+    compilerScript = os.path.join(SCRIPT_DIR, "compiler.py")
     
     if platform.system() == "Windows":
-        bat_path = os.path.join(SCRIPT_DIR, "cpx.bat")
-        if os.path.exists(bat_path):
+        batPath = os.path.join(SCRIPT_DIR, "cpx.bat")
+        if os.path.exists(batPath):
             print("[*] cpx.bat already exists, skipping creation.")
         else:
-            with open(bat_path, "w") as f:
-                f.write(f'@echo off\npython "{compiler_script}" %*\n')
-            print(f"[+] Created launcher: {bat_path}")
+            with open(batPath, "w") as f:
+                f.write(f'@echo off\npython "{compilerScript}" %*\n')
+            print(f"[+] Created launcher: {batPath}")
     else:
-        sh_path = os.path.join(SCRIPT_DIR, "cpx")
-        if os.path.exists(sh_path):
+        shPath = os.path.join(SCRIPT_DIR, "cpx")
+        if os.path.exists(shPath):
             print("[*] cpx launcher already exists, skipping creation.")
         else:
-            with open(sh_path, "w") as f:
-                f.write(f'#!/bin/bash\npython3 "{compiler_script}" "$@"\n')
-            os.chmod(sh_path, 0o755)
-            print(f"[+] Created launcher: {sh_path}")
+            with open(shPath, "w") as f:
+                f.write(f'#!/bin/bash\npython3 "{compilerScript}" "$@"\n')
+            os.chmod(shPath, 0o755)
+            print(f"[+] Created launcher: {shPath}")
 
 
 # ================ PATH MANAGEMENT ================
-def update_path_windows():
+def updatePathWindows():
     """Update PATH on Windows"""
     try:
         result = subprocess.run(
@@ -342,14 +342,14 @@ def update_path_windows():
              '[Environment]::GetEnvironmentVariable("Path","User")'],
             capture_output=True, text=True
         )
-        current_path = result.stdout.strip()
-        paths = [p.strip() for p in current_path.split(";") if p.strip()]
+        currentPath = result.stdout.strip()
+        paths = [p.strip() for p in currentPath.split(";") if p.strip()]
         
         if SCRIPT_DIR not in paths:
-            new_path = current_path + (';' if current_path else '') + SCRIPT_DIR
+            newPath = currentPath + (';' if currentPath else '') + SCRIPT_DIR
             subprocess.run([
                 'powershell', '-Command',
-                f"[Environment]::SetEnvironmentVariable('Path', '{new_path}', 'User')"
+                f"[Environment]::SetEnvironmentVariable('Path', '{newPath}', 'User')"
             ], check=True)
             print(f"[+] Added {SCRIPT_DIR} to the user PATH.")
             print("[*] Restart your terminal for changes to apply.")
@@ -359,62 +359,62 @@ def update_path_windows():
         print(f"[!] Failed to update PATH: {e}")
 
 
-def update_path_unix():
+def updatePathUnix():
     """Update PATH on Linux/macOS"""
     home = os.path.expanduser("~")
     
     shell = os.environ.get("SHELL", "")
     if "zsh" in shell:
-        rc_file = os.path.join(home, ".zshrc")
+        rcFile = os.path.join(home, ".zshrc")
     elif "bash" in shell:
-        rc_file = os.path.join(home, ".bashrc")
+        rcFile = os.path.join(home, ".bashrc")
     else:
-        rc_file = os.path.join(home, ".profile")
+        rcFile = os.path.join(home, ".profile")
     
-    path_export = f'export PATH="$PATH:{SCRIPT_DIR}"\n'
+    pathExport = f'export PATH="$PATH:{SCRIPT_DIR}"\n'
     
     try:
-        if os.path.exists(rc_file):
-            with open(rc_file, "r") as f:
+        if os.path.exists(rcFile):
+            with open(rcFile, "r") as f:
                 content = f.read()
                 if SCRIPT_DIR in content:
                     print("[*] Directory already in PATH configuration.")
                     return
         
-        with open(rc_file, "a") as f:
-            f.write(f"\n# Added by cpx installer\n{path_export}")
+        with open(rcFile, "a") as f:
+            f.write(f"\n# Added by cpx installer\n{pathExport}")
         
-        print(f"[+] Added {SCRIPT_DIR} to PATH in {rc_file}")
-        print(f"[*] Run 'source {rc_file}' or restart your terminal for changes to apply.")
+        print(f"[+] Added {SCRIPT_DIR} to PATH in {rcFile}")
+        print(f"[*] Run 'source {rcFile}' or restart your terminal for changes to apply.")
         
     except Exception as e:
         print(f"[!] Failed to update PATH: {e}")
-        print(f"[*] Manual setup: Add 'export PATH=\"$PATH:{SCRIPT_DIR}\"' to your {rc_file}")
+        print(f"[*] Manual setup: Add 'export PATH=\"$PATH:{SCRIPT_DIR}\"' to your {rcFile}")
 
 
 # ================ FILE TYPE REGISTRATION ================
-def register_windows():
+def registerWindows():
     """Register .cpx file type on Windows"""
     import winreg
     import ctypes
 
-    ico_path = os.path.join(SETUP_DIR, "cpx.ico")
-    if not os.path.exists(ico_path):
+    icoPath = os.path.join(SETUP_DIR, "cpx.ico")
+    if not os.path.exists(icoPath):
         raise FileNotFoundError("cpx.ico not found - run icon generation first")
 
-    def set_key(root, path, name, value):
+    def setKey(root, path, name, value):
         key = winreg.CreateKey(root, path)
         winreg.SetValueEx(key, name, 0, winreg.REG_SZ, value)
         winreg.CloseKey(key)
 
     # Register extension
-    set_key(winreg.HKEY_CLASSES_ROOT, EXT, "", TYPE_NAME)
+    setKey(winreg.HKEY_CLASSES_ROOT, EXT, "", TYPE_NAME)
     
     # Register type
-    set_key(winreg.HKEY_CLASSES_ROOT, TYPE_NAME, "", FRIENDLY_NAME)
+    setKey(winreg.HKEY_CLASSES_ROOT, TYPE_NAME, "", FRIENDLY_NAME)
     
     # Register icon
-    set_key(winreg.HKEY_CLASSES_ROOT, TYPE_NAME + r"\DefaultIcon", "", ico_path)
+    setKey(winreg.HKEY_CLASSES_ROOT, TYPE_NAME + r"\DefaultIcon", "", icoPath)
     
     # Notify Windows of the change
     SHCNE_ASSOCCHANGED = 0x08000000
@@ -428,10 +428,10 @@ def register_windows():
         print("[!] Could not notify Explorer - you may need to restart Explorer or reboot")
 
 
-def register_macos():
+def registerMacos():
     """Register .cpx file type on macOS"""
-    icns_path = os.path.join(SETUP_DIR, "cpx.icns")
-    if not os.path.exists(icns_path):
+    icnsPath = os.path.join(SETUP_DIR, "cpx.icns")
+    if not os.path.exists(icnsPath):
         raise FileNotFoundError("cpx.icns not found - run icon generation first")
 
     plist = f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -465,7 +465,7 @@ def register_macos():
         with open(os.path.join(app, "Contents", "Info.plist"), "w") as f:
             f.write(plist)
 
-        os.system(f"cp '{icns_path}' '{app}/Contents/Resources/cpx.icns'")
+        os.system(f"cp '{icnsPath}' '{app}/Contents/Resources/cpx.icns'")
 
         subprocess.run([
             "/System/Library/Frameworks/CoreServices.framework"
@@ -478,20 +478,20 @@ def register_macos():
     print("[+] macOS LaunchServices updated for .cpx")
 
 
-def register_linux():
+def registerLinux():
     """Register .cpx file type on Linux"""
-    icon_dir = os.path.join(SETUP_DIR, "cpx_linux_icons")
-    if not os.path.isdir(icon_dir):
+    iconDir = os.path.join(SETUP_DIR, "cpx_linux_icons")
+    if not os.path.isdir(iconDir):
         raise FileNotFoundError("cpx_linux_icons directory not found - run icon generation first")
 
-    mime_dir = os.path.expanduser("~/.local/share/mime/packages")
-    app_dir = os.path.expanduser("~/.local/share/applications")
-    icon_target = os.path.expanduser("~/.local/share/icons/hicolor")
+    mimeDir = os.path.expanduser("~/.local/share/mime/packages")
+    appDir = os.path.expanduser("~/.local/share/applications")
+    iconTarget = os.path.expanduser("~/.local/share/icons/hicolor")
 
-    os.makedirs(mime_dir, exist_ok=True)
-    os.makedirs(app_dir, exist_ok=True)
+    os.makedirs(mimeDir, exist_ok=True)
+    os.makedirs(appDir, exist_ok=True)
 
-    mime_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+    mimeXml = f"""<?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
   <mime-type type="text/x-cpx">
     <comment>{FRIENDLY_NAME}</comment>
@@ -500,28 +500,28 @@ def register_linux():
 </mime-info>
 """
 
-    mime_file = os.path.join(mime_dir, "cpx.xml")
-    with open(mime_file, "w") as f:
-        f.write(mime_xml)
+    mimeFile = os.path.join(mimeDir, "cpx.xml")
+    with open(mimeFile, "w") as f:
+        f.write(mimeXml)
 
     subprocess.run(["update-mime-database", os.path.expanduser("~/.local/share/mime")])
 
-    for file in os.listdir(icon_dir):
+    for file in os.listdir(iconDir):
         size = file.replace(".png", "")
-        target = os.path.join(icon_target, size, "mimetypes")
+        target = os.path.join(iconTarget, size, "mimetypes")
         os.makedirs(target, exist_ok=True)
         subprocess.run([
             "cp",
-            os.path.join(icon_dir, file),
+            os.path.join(iconDir, file),
             os.path.join(target, "text-x-cpx.png")
         ])
 
-    subprocess.run(["gtk-update-icon-cache", icon_target], stderr=subprocess.DEVNULL)
+    subprocess.run(["gtk-update-icon-cache", iconTarget], stderr=subprocess.DEVNULL)
 
     print("[+] Linux MIME + icon registered for .cpx")
 
 
-def parse_bool(value):
+def parseBool(value):
     """Convert string argument to boolean"""
     if isinstance(value, bool):
         return value
@@ -534,7 +534,7 @@ def parse_bool(value):
 
 # ================ MAIN ================
 def main():
-    os_name = platform.system()
+    osName = platform.system()
     
     # Parse command line arguments
     if len(sys.argv) != 6:
@@ -544,63 +544,63 @@ def main():
         sys.exit(1)
     
     try:
-        run_dependencies = parse_bool(sys.argv[1])
-        run_icons = parse_bool(sys.argv[2])
-        run_launcher = parse_bool(sys.argv[3])
-        run_path = parse_bool(sys.argv[4])
-        run_register = parse_bool(sys.argv[5])
+        runDependencies = parseBool(sys.argv[1])
+        runIcons = parseBool(sys.argv[2])
+        runLauncher = parseBool(sys.argv[3])
+        runPath = parseBool(sys.argv[4])
+        runRegister = parseBool(sys.argv[5])
     except ValueError as e:
         print(f"[!] Error: {e}")
         print("[*] Arguments must be True/False or 1/0")
         sys.exit(1)
     
-    print(f"[*] Detected OS: {os_name}")
+    print(f"[*] Detected OS: {osName}")
     print(f"[*] Installation directory: {SCRIPT_DIR}")
     
     # 1. Check dependencies
-    if run_dependencies:
-        if not check_dependencies():
+    if runDependencies:
+        if not checkDependencies():
             print("\n[!] Installation cannot continue until dependencies are satisfied.")
             sys.exit(1)
     
     # 2. Generate icons
-    if run_icons:
-        icon_source = os.path.join(SETUP_DIR, "icon.png")
-        if os.path.exists(icon_source):
+    if runIcons:
+        iconSource = os.path.join(SETUP_DIR, "icon.png")
+        if os.path.exists(iconSource):
             print("\n=== GENERATING ICONS ===")
             try:
-                generate_icons(icon_source)
+                generateIcons(iconSource)
             except Exception as e:
                 print(f"[!] Icon generation failed: {e}")
         else:
-            print(f"\n[!] No icon.png found at {icon_source}")
-            if run_register:
+            print(f"\n[!] No icon.png found at {iconSource}")
+            if runRegister:
                 print("[!] Cannot register file type without icons")
-                run_register = False
+                runRegister = False
     
     # 3. Create launcher
-    if run_launcher:
+    if runLauncher:
         print("\n=== CREATING LAUNCHER ===")
-        create_launcher()
+        createLauncher()
     
     # 4. Update PATH
-    if run_path:
+    if runPath:
         print("\n=== UPDATING PATH ===")
-        if os_name == "Windows":
-            update_path_windows()
+        if osName == "Windows":
+            updatePathWindows()
         else:
-            update_path_unix()
+            updatePathUnix()
     
     # 5. Register file type
-    if run_register:
+    if runRegister:
         print("\n=== REGISTERING FILE TYPE ===")
         try:
-            if os_name == "Windows":
-                register_windows()
-            elif os_name == "Darwin":
-                register_macos()
-            elif os_name == "Linux":
-                register_linux()
+            if osName == "Windows":
+                registerWindows()
+            elif osName == "Darwin":
+                registerMacos()
+            elif osName == "Linux":
+                registerLinux()
             else:
                 print("[!] Unsupported OS for file type registration")
         except Exception as e:
