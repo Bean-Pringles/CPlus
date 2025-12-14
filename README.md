@@ -79,4 +79,5 @@ void main() {
 <h1 id="milestones">Milestones:</h1>
 <ul>
   <li>100 Commits!</li>
+  <li>Reached a 7/10 linter score</li>
 </ui>
