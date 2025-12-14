@@ -2,7 +2,7 @@
   <img src="https://github.com/Bean-Pringles/CPlus/blob/main/Logo/cplus.png" alt="C+ Logo">
   <h3>Readable C</h3>
   <!-- The functional badge code -->
-  <img alt="Static Badge" src="https://img.shields.io/github/stars/Bean-Pringles/Cplus"> <img alt="Static Badge" src="https://img.shields.io/badge/Language-Python-orange"> <img alt="Static Badge" src="https://img.shields.io/badge/OS-Windows, Linux, MacOS-green"> <img alt="Static Badge" src="https://img.shields.io/badge/Version-v0.2.3-purple"> <img alt="Static Badge" src="https://img.shields.io/badge/CPU-x86-yellow"> <img alt="Static Badge" src=https://img.shields.io/github/downloads/Bean-Pringles/Cplus/total.svg"> <img alt="Static Badge" src="https://img.shields.io/github/repo-size/Bean-Pringles/Cplus"> <img alt="Static Badge" src="https://img.shields.io/github/last-commit/Bean-Pringles/Cplus"> <img alt="Static Badge"src="https://img.shields.io/badge/404-Not%20Found-lightgrey">
+  <img alt="Static Badge" src="https://img.shields.io/github/stars/Bean-Pringles/Cplus"> <img alt="Static Badge" src="https://img.shields.io/badge/Language-Python-orange"> <img alt="Static Badge" src="https://img.shields.io/badge/OS-Windows, Linux, MacOS-green"> <img alt="Static Badge" src="https://img.shields.io/badge/Version-v0.3.3-purple"> <img alt="Static Badge" src="https://img.shields.io/badge/CPU-x86-yellow"> <img alt="Static Badge" src=https://img.shields.io/github/downloads/Bean-Pringles/Cplus/total.svg"> <img alt="Static Badge" src="https://img.shields.io/github/repo-size/Bean-Pringles/Cplus"> <img alt="Static Badge" src="https://img.shields.io/github/last-commit/Bean-Pringles/Cplus"> <img alt="Static Badge"src="https://img.shields.io/badge/404-Not%20Found-lightgrey">
   <h1> </h1>
 </div>
 
@@ -58,16 +58,16 @@ void main() {
   <li>Uses the GCC Compiler to compile the C</li>
   <li>If/Else statements do not require parentheses</li>
   <li>Void functions declared with "fn"</li>
-  <li>Functions that return have a "-> [var type]" after the arguemnets</li>
+  <li>Functions that return have a "-> [var type]" after the arguments</li>
   <li>Use "import [libray name]"</li>
-  <li>Supports unsigned, long, short, or long long varibles with the following syntax "let x: int; [unsigned]; [long, short, long long]"</li>
+  <li>Supports unsigned, long, short, or long long variables with the following syntax "let x: int; [unsigned]; [long, short, long long]"</li>
   <li>Uses "print" instead of "printf"</li>
 </ul>
 
 <h1 id="setup">Setup:</h1>
-<p>You can set up the compiler by navigating to setup.exe and running it. Make sure you run it as an admin. Then you can run the compiler by:</p>
+<p>You can set up the compiler by navigating to setup.exe and running it. Make sure you run it as an admin on Windows or with execute premissions on Linux/MacOS. Then you can run the compiler by:</p>
 <pre><code>cpx [filename].cpx [Flags: -r -d -c -v]</code></pre>
-<p>The subdir /setup is the decompiled setup.exe</p>
+<p>NOTE: The subdir /setup is the decompiled source code for setup.exe</p>
 
 <h1 id="license">License:</h1>
 <p>This project is licensed under the <a href="https://github.com/Bean-Pringles/CPlus/blob/main/LICENSE.md">Bean Pringles Compiler License (BPC License) v1.0</a></p>
@@ -77,6 +77,6 @@ void main() {
 <p>Things with a row of "-" underneath them are completed and added to the main repository</p>
 
 <h1 id="milestones">Milestones:</h1>
-<ui>
+<ul>
   <li>100 Commits!</li>
 </ui>
