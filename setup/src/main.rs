@@ -250,7 +250,7 @@ impl SetupApp {
             });
 
             // Run the actual command with unbuffered output
-            let result = Command::new("python")
+            let result = Command::new("pythonw")
                 .arg("-u")  // Unbuffered output
                 .arg(PYTHON_SCRIPT_PATH)
                 .args(&args)
