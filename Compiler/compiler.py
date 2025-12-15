@@ -398,7 +398,10 @@ def main():
     try:
         if sys.argv:
             if "-v" in sys.argv:
-                print("C+ Compiler Version:\n v0.2.3")
+                print("C+ Compiler Version:\n v0.3.3")
+                sys.exit()
+            if "-b" in sys.argv:
+                print("Written by Bean_Pringles. https://github.com/Bean-Pringles")
                 sys.exit()
         
         if len(sys.argv) < 2:
