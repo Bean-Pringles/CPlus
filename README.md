@@ -80,4 +80,4 @@ void main() {
 <ul>
   <li>100 Commits!</li>
   <li>Reached a 7/10 linter score</li>
-</ui>
+</ul>
