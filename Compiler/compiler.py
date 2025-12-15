@@ -400,8 +400,11 @@ def main():
             if "-v" in sys.argv:
                 print("C+ Compiler Version:\n v0.3.3")
                 sys.exit()
-            if "-b" in sys.argv:
+            elif "-b" in sys.argv:
                 print("Written by Bean_Pringles. https://github.com/Bean-Pringles")
+                sys.exit()
+            elif "-g" in sys.argv:
+                print("Documentation by Bean_Pringles. https://github.com/mogus-kid")
                 sys.exit()
         
         if len(sys.argv) < 2:
@@ -457,4 +460,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
