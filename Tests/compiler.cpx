@@ -1,0 +1,245 @@
+import stdio
+import stdlib
+import string
+
+let* inMultilineComment: int = NULL
+
+fn is_windows() -> int {
+    #ifdef _WIN32
+        return 1
+    #else
+        return 0
+    #endif
+}
+
+fn compileC(filename: string, has_c_flag: int, has_r_flag: int, has_d_flag: int) -> int {
+    let output_name: string
+    let cmd: string
+    let fileexe: string
+    
+    if (has_c_flag == 0) {
+        if (is_windows()) {
+            sprintf(output_name, "%.*s.exe", strlen(filename) - 2, filename)
+        } else {
+            sprintf(output_name, "%.*s", strlen(filename) - 2, filename)
+        }
+        
+        sprintf(cmd, "gcc %s -o %s", filename, output_name)
+        
+        if (system(cmd) != 0) {
+            printf("[Error] GCC compilation failed\n")
+            return 1
+        }
+        
+        remove(filename)
+        
+        if (has_r_flag) {
+            if (is_windows()) {
+                sprintf(fileexe, "%.*s.exe", strlen(filename) - 2, filename)
+            } else {
+                sprintf(fileexe, "./%.*s", strlen(filename) - 2, filename)
+            }
+            
+            if (system(fileexe) != 0) {
+                printf("[Error] Program execution failed\n")
+            }
+            
+            if (has_d_flag) {
+                remove(output_name)
+            }
+        }
+    }
+    
+    return 0
+}
+
+fn writeFile(line: string, filepath: string) -> int {
+    let* file: string = fopen(filepath, "a")
+    
+    if (file == NULL) {
+        printf("[Error] Could not open file '%s'\n", filepath)
+        return 1
+    }
+    
+    fprintf(file, "%s", line)
+    fclose(file)
+    
+    return 0
+}
+
+fn countLines(filepath: string) -> int {
+    let* file: string = fopen(filepath, "r")
+    let count: int = 0
+    let ch: int
+    
+    if (file == NULL) {
+        printf("[Error] File not found: '%s'\n", filepath)
+        return -1
+    }
+    
+    while ((ch = fgetc(file)) != EOF) {
+        if (ch == '\n') {
+            count = count + 1
+        }
+    }
+    
+    fclose(file)
+    return count
+}
+
+fn getLine(filename: string, n: int, buffer: string) -> int {
+    let* file: string = fopen(filename, "r")
+    let current_line: int = 0
+    
+    if (file == NULL) {
+        printf("[Error] File not found: '%s'\n", filename)
+        return 1
+    }
+    
+    while (fgets(buffer, 4096, file) != NULL) {
+        current_line = current_line + 1
+        if (current_line == n) {
+            fclose(file)
+            return 0
+        }
+    }
+    
+    fclose(file)
+    return 1
+}
+
+fn removeNewline(str: string) -> int {
+    let len: int = strlen(str)
+    let i: int
+    
+    for (i = 0; i < len; i = i + 1) {
+        if (str[i] == '\n' || str[i] == '\r') {
+            str[i] = '\0'
+            return 0
+        }
+    }
+    
+    return 0
+}
+
+fn compileLine(line: string, output: string) -> int {
+    let temp: string
+    
+    if (strlen(line) == 0 || line[0] == '\n') {
+        strcpy(output, "\n")
+        return 0
+    }
+    
+    strcpy(temp, line)
+    
+    if (strstr(temp, "let ") != NULL) {
+        let* ptr: string = strstr(temp, "let ")
+        let* colon: string = strchr(ptr, ':')
+        
+        if (colon != NULL) {
+            if (strstr(colon, "int") != NULL) {
+                memcpy(ptr, "int", 3)
+            } else if (strstr(colon, "float") != NULL) {
+                memcpy(ptr, "float", 5)
+            } else if (strstr(colon, "double") != NULL) {
+                memcpy(ptr, "double", 6)
+            } else if (strstr(colon, "string") != NULL) {
+                memcpy(ptr, "char*", 5)
+            }
+        }
+    }
+    
+    if (strstr(temp, "fn ") != NULL) {
+        let* ptr: string = strstr(temp, "fn ")
+        
+        if (strstr(temp, "->") != NULL) {
+            memcpy(ptr, "int", 3)
+        } else {
+            memcpy(ptr, "void", 4)
+        }
+    }
+    
+    if (strstr(temp, "print(") != NULL) {
+        let* ptr: string = strstr(temp, "print")
+        memcpy(ptr, "printf", 6)
+    }
+    
+    if (strstr(temp, "import ") != NULL) {
+        let* ptr: string = strstr(temp, "import ")
+        memcpy(ptr, "#include <", 10)
+    }
+    
+    strcpy(output, temp)
+    
+    let len: int = strlen(output)
+    if (len > 0 && output[len - 1] != ';' && output[len - 1] != '{' && output[len - 1] != '}') {
+        strcat(output, ";")
+    }
+    
+    strcat(output, "\n")
+    
+    return 0
+}
+
+fn main(argc: int, argv: string) -> int {
+    let filename: string
+    let cfilepath: string
+    let numLines: int
+    let i: int
+    let line: string
+    let compiled: string
+    let has_c_flag: int = 0
+    let has_r_flag: int = 0
+    let has_d_flag: int = 0
+    
+    if (argc < 2) {
+        printf("[Error] Usage: cpc <filename.cpx> [options]\n")
+        return 1
+    }
+    
+    for (i = 1; i < argc; i = i + 1) {
+        if (strcmp(argv[i], "-v") == 0) {
+            printf("C+ Compiler Version:\n v0.2.3\n")
+            return 0
+        }
+        if (strcmp(argv[i], "-c") == 0) {
+            has_c_flag = 1
+        }
+        if (strcmp(argv[i], "-r") == 0) {
+            has_r_flag = 1
+        }
+        if (strcmp(argv[i], "-d") == 0) {
+            has_d_flag = 1
+        }
+    }
+    
+    strcpy(filename, argv[1])
+    
+    if (strstr(filename, ".cpx") == NULL) {
+        printf("[Error] A .cpx file is required\n")
+        return 1
+    }
+    
+    sprintf(cfilepath, "%.*sc", strlen(filename) - 3, filename)
+    
+    remove(cfilepath)
+    
+    numLines = countLines(filename)
+    
+    if (numLines == -1) {
+        printf("[Error] Failed to read input file\n")
+        return 1
+    }
+    
+    for (i = 1; i <= numLines; i = i + 1) {
+        if (getLine(filename, i, line) == 0) {
+            removeNewline(line)
+            compileLine(line, compiled)
+            writeFile(compiled, cfilepath)
+        }
+    }
+    
+    compileC(cfilepath, has_c_flag, has_r_flag, has_d_flag)
+    
+    return 0
+}
