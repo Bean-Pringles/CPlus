@@ -65,9 +65,10 @@ void main() {
 </ul>
 
 <h1 id="setup">Setup:</h1>
-<p>You can set up the compiler by navigating to setup.exe and running it. Make sure you run it as an admin on Windows or with execute premissions on Linux/MacOS. Then you can run the compiler by:</p>
+<p>You can set up the compiler by navigating to setup.exe and running it. Make sure you run it as an admin on Windows. Then you can run the compiler by:</p>
 <pre><code>cpx [filename].cpx [Flags: -r -d -c -v]</code></pre>
 <p>NOTE: The subdir /setup is the decompiled source code for setup.exe</p>
+<p>NOTE: If you are on MacOS/Linux, you must compile it for your host system with the cargo command.</p>
 
 <h1 id="license">License:</h1>
 <p>This project is licensed under the <a href="https://github.com/Bean-Pringles/CPlus/blob/main/LICENSE.md">Bean Pringles Compiler License (BPC License) v1.0</a></p>
