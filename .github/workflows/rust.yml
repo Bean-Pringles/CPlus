@@ -10,7 +10,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  lint: # Renamed from build for clarity
     runs-on: ubuntu-latest
 
     defaults:
@@ -19,9 +19,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    
-    - name: Build
-      run: cargo build --verbose
+
+    - name: Install Clippy
+      run: rustup component add clippy
+
+    - name: Lint with Clippy
+      # -- -D warnings ensures the build fails if lints are found
+      run: cargo clippy --verbose -- -D warnings
       
     - name: Run tests
       run: cargo test --verbose
